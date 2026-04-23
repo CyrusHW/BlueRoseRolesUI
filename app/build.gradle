@@ -6,12 +6,12 @@ plugins {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(26)
+        languageVersion = JavaLanguageVersion.of(25)
     }
 }
 
 javafx {
-    version = "26"
+    version = "25.0.2"
     modules = [ "javafx.controls", "javafx.web" ]
 }
 
@@ -24,29 +24,25 @@ repositories {
 }
 
 dependencies {
-    // Adding this explicitly often fixes the missing JSObject package in 2026
-    implementation "org.openjfx:javafx-web:26"
-    implementation "org.openjfx:javafx-controls:26"
+    implementation "org.openjfx:javafx-controls:25.0.2"
+    implementation "org.openjfx:javafx-web:25.0.2"
     
     implementation libs.guava
     testImplementation libs.junit.jupiter
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
-// Remove the tasks.withType(JavaCompile) block entirely. 
-// The javafxplugin handles this via the module-path automatically.
-// This tells the compiler where to find JSObject
-tasks.withType(JavaCompile) {
-    options.compilerArgs += ["--add-modules", "jdk.jsobject"]
+tasks.named("test") {
+    useJUnitPlatform()
+    failOnNoDiscoveredTests = false
 }
+
 tasks.named("run", JavaExec) {
-    // Configuration-cache safe approach
-    def cp = classpath
-    classpath = cp 
-    
-    jvmArgs = [
-        "--module-path", cp.asPath,
-        "--add-modules", "javafx.controls,javafx.web" 
-        // Note: jdk.jsobject is usually provided by javafx.web now
-    ]
+    doFirst {
+        jvmArgs += [
+            "--module-path", classpath.asPath,
+            "--add-modules", "javafx.controls,javafx.web"
+        ]
+    }
 }
+
