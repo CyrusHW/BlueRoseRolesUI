@@ -1,38 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ellashboard 2026</title>
-  <link rel="stylesheet" href="css.css">
+    <title>Ellashboard 2026</title>
+    <link rel="stylesheet" href="css.css">
+    
+    <!-- Required Jspreadsheet & Jsuites Assets -->
+    <script src="https://bossanova.uk"></script>
+    <script src="https://jsuites.net"></script>
+    <link rel="stylesheet" href="https://jsuites.net" type="text/css" />
+    <link rel="stylesheet" href="https://bossanova.uk" type="text/css" />
 </head>
 <body>
+    <div id="app">
+        <div id="connect">
+            <button onclick="connectRobot()">Connect to Robot</button>
+            <button onclick="connectSim()">Connect to Simulation</button>
+            <span id="status">Not connected</span>
+        </div>
 
-<div id="app">
+        <div id="fieldContainer">
+            <img id="map" src="field.png">
+            <img id="robot" src="robot.png">
+            <img id="target" src="target.png">
+        </div>
 
-  <!-- Connection -->
-  <div id="connect">
-    <button onclick="connectRobot()">Connect to Robot</button>
-    <button onclick="connectSim()">Connect to Simulation</button>
-    <span id="status">Not connected</span>
-  </div>
+        <!-- Single Spreadsheet Container (Replaces Phases) -->
+        <div id="spreadsheet"></div>
+    </div>
 
-  <!-- Field -->
-  <div id="fieldContainer">
-    <img id="map" src="field.png">
-    <img id="robot" src="robot.png">
-    <img id="target" src="target.png">
-  </div>
-
-  <!-- Phase Boxes -->
-  <div id="phases">
-  </div>
-
-  <!-- Time To Next (flashes red at 3 seconds) -->
-   <div id="nextPhase">
-    <!-- <div id="phaseDisplay" class="nextPhaseBox"></div> -->
-   </div>
-
-</div>
-
-<script src="app.js"></script>
+    <!-- Your Integrated JS File -->
+    <script src="Roles.js"></script>
 </body>
 </html>

@@ -17,9 +17,7 @@ public class App extends Application{
     // This is all not working that is why I made the other main file
 
     public static void main(String[] args) throws IOException{
-        // launch(args);
-        FileManager manager = new FileManager(Constants.memberAmount);
-        System.out.println(Constants.members.get(0).toString());
+        launch(args);
     }
 
     @SuppressWarnings(value = {"removal"})
@@ -59,23 +57,15 @@ public class App extends Application{
         timer.start();
     }
     public String getConstantsJSON() {
-        return "{"
-            // + "\"teamNumber\":" + Constants.teamNumber + ","
-            + "\"windowWidth\":" + Constants.windowWidth + ","
-            + "\"windowHeight\":" + Constants.windowHeight + ","
-            + "\"mapWidth\":" + Constants.mapWidth + ","
-            + "\"mapPadding\":" + Constants.mapPadding + ","
-            + "\"fieldWidth\":" + Constants.fieldWidth + ","
-            + "\"fieldLength\":" + Constants.fieldLength + ","
-            // + "\"robotImgWidth\":" + Constants.robotImgWidth + ","
-            // + "\"phaseWidths\":" + Constants.phaseWidths + ","
-            // + "\"phaseHeights\":" + Constants.phaseHeights + ","
-            // + "\"mainPhaseTimes\":" + arrayToJSON(Constants.mainPhaseTimes) + ","
-            // + "\"phaseTimeRemaining\":" + arrayToJSON(Constants.phaseTimeRemaining) + ","
-            // + "\"startCopyPhase\":" + Constants.startCopyPhase + ","
-            // + "\"endCopyPhase\":" + Constants.endCopyPhase
-            + "}";
-    }
+    // Using a StringBuilder to build clean JSON
+    StringBuilder json = new StringBuilder("{");
+    json.append("\"windowWidth\":").append(Constants.windowWidth).append(",");
+    json.append("\"windowHeight\":").append(Constants.windowHeight); 
+    // Notice: No comma after the last item
+    json.append("}");
+    return json.toString();
+}
+
 
     private String arrayToJSON(int[] phasetimeremaining) {
         StringBuilder sb = new StringBuilder("[");

@@ -1,67 +1,53 @@
 body {
-  margin: 0;
-  background: rgb(41,41,48);
-  font-family: Arial;
+    margin: 0;
+    background: rgb(41, 41, 48);
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
 }
 
 #fieldContainer {
-  position: relative;
-  width: 800px;
-  margin: auto;
+    position: relative;
+    width: 600px;
+    margin: 0 auto;
+    border: 2px solid #444;
+    background: #222;
 }
 
-#map {
-  width: 100%;
+#map { width: 100%; display: block; }
+
+#robot, #target {
+    position: absolute;
+    width: 35px;
+    transform: translate(-50%, -50%);
+    z-index: 10;
 }
 
-#robot {
-  position: absolute;
-  width: 35px;
-  transform: translate(-50%, -50%);
+/* Spreadsheet Container */
+#spreadsheet {
+    background: #f8f9fa; /* Light background so text is black/readable */
+    border-radius: 8px;
+    padding: 10px;
+    min-height: 350px;
+    color: black;
 }
 
-#target {
-  position: absolute;
-  inset-inline-start: 400px;
-  inset-block-start: 200px;
-  width: 35px;
-  transform: translate(-50%, -50%);
-}
+/* Force table to fill width */
+.jexcel { width: 100% !important; }
 
-#phases {
-  display: flex;
-  justify-content: center;
-  gap: 5px;
-  margin-top: 10px;
-}
-
-.phaseBox {
-  width: 60px;
-  height: 60px;
-  border-radius: 5px;
-  background: grey;
-  color: rgb(255, 255, 255);
-  font-size: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#nextPhase {
-  display: flex;
-  justify-content: center;
-  gap: 5px;
-  margin-top: 10px;
-}
-
-.nextPhaseBox {
-  width: 60px;
-  height: 60px;
-  border-radius: 5px;
-  background: grey;
-  color: rgb(255, 255, 255);
-  font-size: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
+/* Side-by-Side Layout for Desktop */
+@media (min-width: 1200px) {
+    #app {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+    }
+    #fieldContainer { margin: 0; }
+    #spreadsheet { flex-grow: 1; max-width: 750px; }
 }

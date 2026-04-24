@@ -10,10 +10,6 @@ public class Constants {
     public static int mapWidth = 800;
     public static double mapPadding = 100;
 
-    // from constants.java in robot code
-    public static final double fieldWidth = 8.069326;
-    public static final double fieldLength = 16.540988;
-
     public static ArrayList<Member> members = new ArrayList<>();
-    public static int memberAmount = 3;
+    public static int memberAmount = teamMembers;
 }
