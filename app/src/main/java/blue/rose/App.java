@@ -14,10 +14,15 @@ import java.io.IOException;
 public class App extends Application{
     private WebEngine engine;
 
+    // This is all not working that is why I made the other main file
+
     public static void main(String[] args) throws IOException{
-        launch(args);
+        // launch(args);
+        FileManager manager = new FileManager(Constants.memberAmount);
+        System.out.println(Constants.members.get(0).toString());
     }
 
+    @SuppressWarnings(value = {"removal"})
     @Override
     public void start(Stage stage){
         WebView view = new WebView();
